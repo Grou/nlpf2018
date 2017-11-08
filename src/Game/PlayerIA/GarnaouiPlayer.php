@@ -17,6 +17,40 @@ class GarnaouiPlayer extends Player
 
     public function getChoice()
     {
+        $myLastChoice = $this->result->getLastChoiceFor($this->mySide);
+        $oppLastChoice = $this->result->getLastChoiceFor($this->opponentSide);
+
+        $oppLastScore = $this->result->getLastScoreFor($this->mySide);
+        $myLastScore = $this->result->getLastScoreFor($this->mySide);
+
+        $scissorsChoice = parent::scissorsChoice();
+        $paperChoice = parent::paperChoice();
+        $rockChoice = parent::rockChoice();
+        
+        
+        if ($this->result->getNbRound() == 0)
+        {
+            return $paperChoice;
+        }
+        else
+        {
+            if ($myLastScore >= $oppLastScore)
+                return $myLastChoice;
+            else
+                if ($myLastChoice == $scissorsChoice && $oppLastChoice == $paperChoice)
+                    return $rockChoice;
+                elseif ($myLastChoice == $paperChoice && $oppLastChoice == $scissorsChoice) 
+                    return $rockChoice;
+                elseif ($myLastChoice == $scissorsChoice && $oppLastChoice == $rockChoice)
+                    return $paperChoice;
+                elseif ($myLastChoice == $rockChoice && $oppLastChoice == $scissorsChoice)
+                    return $paperChoice;
+                elseif ($myLastChoice == $rockChoice && $oppLastChoice == $paperChoice)
+                    return $scissorsChoice;
+                elseif ($myLastChoice == $paperChoice && $oppLastChoice == $rockChoice)
+                    return $scissorsChoice;
+        }
+        
         // -------------------------------------    -----------------------------------------------------
         // How to get my Last Choice           ?    $this->result->getLastChoiceFor($this->mySide) -- if 0 (first round)
         // How to get the opponent Last Choice ?    $this->result->getLastChoiceFor($this->opponentSide) -- if 0 (first round)
@@ -41,8 +75,6 @@ class GarnaouiPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        $choice = parent::scissorsChoice();
-
-        return $choice;
+        return $rockChoice;
     }
 };
