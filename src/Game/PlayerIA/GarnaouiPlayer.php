@@ -29,7 +29,7 @@ class GarnaouiPlayer extends Player
         
         $opp = $this->result->getStatsFor($this->opponentSide)['name'];
 
-        if ($opp == 'Diomande' || $opp == 'Crepin' || $opp == 'Labat' || $opp == 'Fauchille' || $opp == 'Adda')
+        if ($opp == 'Crepin' || $opp == 'Labat' || $opp == 'Fauchille' || $opp == 'Adda')
         {
             return $paperChoice;
         }
