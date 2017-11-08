@@ -34,21 +34,39 @@ class GarnaouiPlayer extends Player
         }
         else
         {
-            if ($myLastScore >= $oppLastScore)
+            if ($myLastScore > $oppLastScore)
+            {
                 return $myLastChoice;
-            else
+            }
+            elseif($myLastScore < $oppLastScore)
+            {
                 if ($myLastChoice == $scissorsChoice && $oppLastChoice == $paperChoice)
+                {
                     return $rockChoice;
-                elseif ($myLastChoice == $paperChoice && $oppLastChoice == $scissorsChoice) 
+                }
+                elseif ($myLastChoice == $paperChoice && $oppLastChoice == $scissorsChoice)
+                {
                     return $rockChoice;
+                }
                 elseif ($myLastChoice == $scissorsChoice && $oppLastChoice == $rockChoice)
+                {
                     return $paperChoice;
+                }
                 elseif ($myLastChoice == $rockChoice && $oppLastChoice == $scissorsChoice)
+                {
                     return $paperChoice;
+                }
                 elseif ($myLastChoice == $rockChoice && $oppLastChoice == $paperChoice)
+                {
                     return $scissorsChoice;
+                }
                 elseif ($myLastChoice == $paperChoice && $oppLastChoice == $rockChoice)
+                {
                     return $scissorsChoice;
+                }
+            elseif($myLastScore == $oppLastScore)
+                return $rockChoice;
+            }
         }
 
         return $rockChoice;
