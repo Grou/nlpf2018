@@ -27,7 +27,14 @@ class GarnaouiPlayer extends Player
         $paperChoice = parent::paperChoice();
         $rockChoice = parent::rockChoice();
         
-        
+        if ($this->result->getStatsFor($this->opponentSide)['name'] == 'Diomande')
+        {
+            return $paperChoice;
+        }
+        if ($this->result->getStatsFor($this->opponentSide)['name'] == 'Adda')
+        {
+            return $paperChoice;
+        }
         if ($this->result->getNbRound() == 0)
         {
             return $paperChoice;
