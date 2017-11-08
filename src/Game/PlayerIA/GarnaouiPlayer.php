@@ -20,7 +20,7 @@ class GarnaouiPlayer extends Player
         $myLastChoice = $this->result->getLastChoiceFor($this->mySide);
         $oppLastChoice = $this->result->getLastChoiceFor($this->opponentSide);
 
-        $oppLastScore = $this->result->getLastScoreFor($this->mySide);
+        $oppLastScore = $this->result->getLastScoreFor($this->opponentSide);
         $myLastScore = $this->result->getLastScoreFor($this->mySide);
 
         $scissorsChoice = parent::scissorsChoice();
